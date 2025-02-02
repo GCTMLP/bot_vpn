@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "bot-vpn"
+version = "0.1.0"
+description = ""
+authors = ["gctml <gctmlp@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiogram = "^3.17.0"
+asyncio = "^3.4.3"
+alembic = "^1.14.1"
+psycopg2 = "^2.9.10"
+environs = "^14.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
