@@ -1,11 +1,12 @@
-from aiogram.types import CallbackQuery, Message
+from aiogram.types import CallbackQuery, Message, ReplyKeyboardRemove
 from aiogram import F
 from aiogram.filters import Command
 
+from services.shemas import UserShema
 from connector import dp, bot
 from handlers.middlewares import IsAdmin
 from text.keyboard_text import (
-    ADMIN_PROLONG_KEY,
+    WRITE_MESSAGE_TO_ALL,
     ADMIN_SHOW_NOT_PROLONG,
     ADMIN_SHOW_USERS,
     ADMIN_SHOW_USERS_KEYS
@@ -26,7 +27,7 @@ from services.depencies import user_service, key_service
 async def cmd_admin(message: Message):
     await message.answer(CHOOSE_ADMIN, reply_markup=staff_kb())
 
-@dp.message(F.text == ADMIN_SHOW_USERS)
+@dp.message(IsAdmin(), F.text == ADMIN_SHOW_USERS)
 async def show_users(message: Message):
     all_users = user_service().get_all_users()
     result = ''
@@ -37,7 +38,7 @@ async def show_users(message: Message):
     await message.answer(result,
                         reply_markup=staff_kb())
 
-@dp.message(F.text == ADMIN_SHOW_NOT_PROLONG)
+@dp.message(IsAdmin(), F.text == ADMIN_SHOW_NOT_PROLONG)
 async def show_not_prolong(message: Message):
     not_prolong_keys = key_service().get_expired_keys()
     result = ''
@@ -49,7 +50,7 @@ async def show_not_prolong(message: Message):
     await message.answer(result,
                         reply_markup=staff_kb())
 
-@dp.message(F.text == ADMIN_SHOW_USERS_KEYS)
+@dp.message(IsAdmin(), F.text == ADMIN_SHOW_USERS_KEYS)
 async def show_users_keys(message: Message):
     users_keys = key_service().get_users_keys()
     result = ''
@@ -59,4 +60,16 @@ async def show_users_keys(message: Message):
             result+=USERS_KEYS_KEYS % (keys['key_name'], keys['expire_at'])
     await message.answer(result,
                         reply_markup=staff_kb())
+
+
+@dp.message(IsAdmin(), F.text == WRITE_MESSAGE_TO_ALL)
+async def write_to_all(message: Message):
+    await message.answer("Напишите сообщение, начинающееся с 'msg'",
+                        reply_markup=ReplyKeyboardRemove())
    
+
+@dp.message(IsAdmin(), F.text.contains('msg'))
+async def write_to_all_msg(message: Message):
+    users: UserShema = user_service.get_all_users()
+    for user in users:
+        bot.send_message(text=str(message.text), chat_id=user.tg_id)

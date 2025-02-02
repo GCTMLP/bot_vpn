@@ -58,10 +58,10 @@ async def new_key(call: CallbackQuery, state: FSMContext):
 @dp.callback_query(F.data == 'my_keys')
 async def new_key(call: CallbackQuery):
     markup = chose_doing_markup()
-    keys = key_service().get_user_keys_dates(message.from_user.id)
+    keys = key_service().get_user_keys_dates(call.from_user.id)
     result_message = KEYS_LIST
     for key in keys:
-        result_message+=KEY_INFO % (key['name'], str(key['expire_at']))
+        result_message+=KEY_INFO % (key['name'], str(key['expire_at'].date()))
     await call.message.answer(result_message, 
                         reply_markup=markup)
 
@@ -107,7 +107,7 @@ async def pay_old_key(call: CallbackQuery, state: FSMContext):
                             ],
                            start_parameter="vpn-subscription",
                            payload="test-invoice-payload")
-    await state.finish()
+
 
 @dp.pre_checkout_query(lambda query: True)
 async def pre_checkout_query(pre_checkout_q: PreCheckoutQuery):

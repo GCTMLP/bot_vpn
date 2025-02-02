@@ -27,3 +27,9 @@ USERS_DATA = f'%s, %s создан %s\n'
 EXPIRE_KEYS = f'у %s - @%s, ключ %s, просрочился %s\n'
 USERS_KEYS_USER = f'пользователь %s - @%s\n'
 USERS_KEYS_KEYS = f'            ключ %s, заканчивается %s\n'
+
+USERS_KEYS_EXPIRE_TEXT = 'Добрый день! Напроминаю, что следующие ключи заканчиваются сегодня:\n'
+USERS_KEYS_EXPIRE = f'%s\n'
+
+USERS_KEYS_EXPIRE_TEXT_SOON = 'Добрый день! Напроминаю, что следующие ключи скоро заканчиваются:\n'
+USERS_KEYS_EXPIRE_SOON = f'Ключ %s заканчивается %s\n'

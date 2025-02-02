@@ -1,11 +1,10 @@
-from services.shemas import UserShema
 import os
 from database.repository import SQLAlchemyRepository
 from config import NEW_KEY_DIR
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from services.shemas import UserShema
 from database.models import Keys
-from sqlalchemy import select
+from sqlalchemy import select, func
 
 
 class UserService:
@@ -17,7 +16,10 @@ class UserService:
             isset = self._user_repo.get_one({'tg_id':user_data.tg_id})
             if isset:
                 return 'old'
-            self._user_repo.add_one(user_data.model_dump())
+            self._user_repo.add_one({'tg_id':user_data.tg_id, 
+                                    'first_name':user_data.first_name,
+                                    'last_name':user_data.last_name, 
+                                    'username':user_data.username})
             return 'new'
         except Exception as e:
             print(f'error in save_start_user {str(e)}')
@@ -37,6 +39,7 @@ class KeyService:
         self._user_repo = user_repo()
 
     def get_user_id(self, tg_user_id):
+        print('userrr'+str(tg_user_id))
         return self._user_repo.get_one({'tg_id': tg_user_id}).id
 
     def get_user_keys(self, tg_user_id: int) -> list:
@@ -66,11 +69,25 @@ class KeyService:
         expire_date = date_start+timedelta(month=period)
         self._key_repo.update(key, {'expire_at': expire_date})
 
-    def get_expired_keys(self):
-        now = datetime.now()
-        keys_expire_sql = select(self._key_repo.model).filter(self._key_repo.model.expire_at < str(now))
+    def get_expired_keys(self, today=False, soon=False):
+        t_offset = timedelta(hours=3)
+        t_zone = timezone(offset=t_offset, name="UTC")
+        now = datetime.now(t_zone)
+        if today:
+            keys_expire_sql = select(self._key_repo.model).filter(func.date(self._key_repo.model.expire_at) == now.date())
+        if soon:
+            keys_expire_sql = select(self._key_repo.model).filter((func.date(self._key_repo.model.expire_at)+timedelta(day=1)) == now.date())
+        keys_expire_sql = select(self._key_repo.model).filter(self._key_repo.model.expire_at < now.date())
         keys_expire = self._key_repo.native_sql(keys_expire_sql)
         return keys_expire
+
+    def get_expired_today_keys(self):
+        t_offset = timedelta(hours=3)
+        t_zone = timezone(offset=t_offset, name="UTC")
+        now = datetime.now(t_zone)
+        keys_expire_sql = select(self._key_repo.model).filter(func.date(self._key_repo.model.expire_at) == now.date())
+        keys_today_expire = self._key_repo.native_sql(keys_expire_sql)
+        return keys_today_expire
 
     def get_users_keys(self):
         data = {}
