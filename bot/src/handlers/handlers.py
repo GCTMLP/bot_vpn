@@ -15,7 +15,11 @@ import json
 import logging
 from logging.config import dictConfig
 from connector import dp, bot
-from services.depencies import user_service, key_service
+from services.depencies import (
+    user_service, 
+    key_service, 
+    payment_service
+)
 from services.shemas import UserShema
 from text.message_text import (
     HELLO,
@@ -295,5 +299,6 @@ async def successful_payment(message: Message,  state: FSMContext):
                                 ADD_NEW_SUCCESS %(filename, 
                                                 turn_date(new_expire.split(' ')[0])),
                                 reply_markup=chose_doing_markup())
+        payment_service().save_payment(payment_info.total_amount/100, message.chat.id)
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in successful_payment: {str(e)}')

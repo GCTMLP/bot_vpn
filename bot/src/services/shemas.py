@@ -8,4 +8,3 @@ class UserShema(BaseModel):
     last_name: Optional[str] = None
     username: Optional[str] = None
     create_at: Optional[datetime] = None
-    

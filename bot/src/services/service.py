@@ -153,3 +153,19 @@ class KeyService:
             return new_expire
         except Exception as e:
             ERROR_LOG.error(f'error in prolong_key {str(e)}')
+
+
+class PaymentService:
+    def __init__(self, payment_repo: SQLAlchemyRepository, user_repo: SQLAlchemyRepository):
+        self._payment_repo = payment_repo()
+        self._user_repo = user_repo()
+
+    def get_user_id(self, tg_user_id):
+        return self._user_repo.get_one({'tg_id': tg_user_id}).id
+
+    def save_payment(self, suma, tg_id):
+        try:
+            user_id = get_user_id(tg_user_id)
+            self._payment_repo.add_one({'sum': suma, 'user_id': user_id})
+        except Exception as e:
+            ERROR_LOG.error(f'error in save_payment {str(e)}')
