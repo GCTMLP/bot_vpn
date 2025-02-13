@@ -19,3 +19,4 @@ env.bak/
 venv.bak/
 .DS_Store
 bot/keys
+*.ovpn
