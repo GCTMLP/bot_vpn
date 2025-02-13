@@ -15,6 +15,6 @@ COPY migration /code/migration
 COPY keys /code/keys
 COPY src /code/src
 COPY instruction /code/instruction
-COPY .env /code/
+COPY .env /code
 
 ENV PYTHONPATH="/code:"
