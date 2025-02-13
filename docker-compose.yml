@@ -17,12 +17,23 @@ services:
       timeout: 10s
       retries: 5
 
-  # bot_db_init:
-  #   build: .
-  #   command: alembic upgrade head
-  #   depends_on:
-  #     bot_db:
-  #       condition: service_healthy
+  bot_db_init:
+    build: bot
+    command: alembic upgrade head
+    depends_on:
+      bot_db:
+        condition: service_healthy
+
+  bot:
+    build: bot
+    command: python src/main.py
+    restart: always
+    volumes:
+      - ./bot/keys:/code/keys
+      - ./bot/src:/code/src
+    depends_on:
+      bot_db_init:
+        condition: service_completed_successfully
 
 volumes:
   pgdata:

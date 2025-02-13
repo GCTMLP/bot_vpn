@@ -12,10 +12,11 @@ from sqlalchemy import (
     ForeignKey,
     Integer,
     String,
+    DateTime
 )
 from sqlalchemy.orm import relationship
 
-from database.connect import Base
+from src.database.connect import Base
 
 
 class Users(Base):
@@ -26,7 +27,7 @@ class Users(Base):
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=True)
     username = Column(String, nullable=True, unique=True)
-    crated_at = Column(TIMESTAMP, default=datetime.utcnow)
+    crated_at = Column(DateTime, default=datetime.utcnow)
     
     key = relationship("Keys", back_populates="user", lazy="selectin")
     payment = relationship("Payments", back_populates="user", lazy="selectin")
@@ -44,8 +45,8 @@ class Keys(Base):
         ),
         nullable=True,
     )
-    crated_at = Column(TIMESTAMP, default=datetime.utcnow)
-    expire_at = Column(TIMESTAMP)
+    crated_at = Column(DateTime, default=datetime.utcnow)
+    expire_at = Column(DateTime)
     
     user = relationship("Users", back_populates="key", lazy="selectin")
 
@@ -54,7 +55,7 @@ class Payments(Base):
     __tablename__ = "payments"
 
     id = Column(Integer, primary_key=True)
-    date = Column(TIMESTAMP, default=datetime.utcnow)
+    date = Column(DateTime, default=datetime.utcnow)
     sum = Column(Integer)
     user_id = Column(
         Integer,

@@ -1,0 +1,21 @@
+2025-02-10 10:51:24,085 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-10 10:51:27,326 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 10:52:31,085 ERROR    admin_handlers /code/src/handlers/admin_handlers.py:59 Unknown error in show_not_prolong: Telegram server says - Bad Request: message text is empty
+2025-02-10 10:52:58,112 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 10:59:16,444 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-10 10:59:23,347 INFO     handlers /code/src/handlers/handlers.py:105 Ivan I_Lipa start prolong his key
+2025-02-10 10:59:33,480 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 11:00:08,097 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 11:00:27,987 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-10 11:00:32,085 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 11:00:40,856 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 11:01:32,639 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 11:01:56,020 INFO     handlers /code/src/handlers/handlers.py:78 Ivan I_Lipa whant to bye new key
+2025-02-10 11:03:20,297 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-10 11:03:25,960 INFO     handlers /code/src/handlers/handlers.py:78 Ivan I_Lipa whant to bye new key
+2025-02-10 11:03:29,203 INFO     handlers /code/src/handlers/handlers.py:137 Ivan I_Lipa chose period 2 to prolong
+2025-02-10 11:03:42,110 INFO     handlers /code/src/handlers/handlers.py:105 Ivan I_Lipa start prolong his key
+2025-02-10 11:04:40,615 INFO     handlers /code/src/handlers/handlers.py:105 Ivan I_Lipa start prolong his key
+2025-02-10 11:04:44,042 INFO     handlers /code/src/handlers/handlers.py:120 Ivan I_Lipa chose key 55.ovpn to prolong
+2025-02-10 11:04:46,105 INFO     handlers /code/src/handlers/handlers.py:137 Ivan I_Lipa chose period 2 to prolong
+2025-02-10 11:04:59,729 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys

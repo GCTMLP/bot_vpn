@@ -5,7 +5,11 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from src.database.models import *
+import sys
+import os
+
+
+import src.database.models
 from src.config import DB_URL
 from src.database.connect import Base
 

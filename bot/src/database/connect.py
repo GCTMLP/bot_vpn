@@ -4,7 +4,7 @@ from typing import Callable
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, scoped_session, sessionmaker
 
-from config import DB_ISOLATION_LEVEL, DB_URL
+from src.config import DB_ISOLATION_LEVEL, DB_URL
 
 class Base(DeclarativeBase):
     pass

@@ -17,9 +17,13 @@ from text.keyboard_text import (
     HELP
 )
 
+every_day_cron = '0 11 * * *'
+every_minute_cron = '* * * * * '
+
 def set_scheduled_jobs(scheduler, bot, *args, **kwargs):
-    scheduler.add_job(send_message_to_user_expired_today, CronTrigger.from_crontab('0 11 * * *'), args=(bot,))
-    scheduler.add_job(send_message_to_user_expired_soon, CronTrigger.from_crontab('0 11 * * *'), args=(bot,))
+    pass
+    #scheduler.add_job(send_message_to_user_expired_today, CronTrigger.from_crontab(every_minute_cron), args=(bot,))
+    #scheduler.add_job(send_message_to_user_expired_soon, CronTrigger.from_crontab(every_minute_cron), args=(bot,))
 
 
 async def main():

@@ -33,3 +33,8 @@ USERS_KEYS_EXPIRE = f'%s\n'
 
 USERS_KEYS_EXPIRE_TEXT_SOON = 'Добрый день! Напроминаю, что следующие ключи скоро заканчиваются:\n'
 USERS_KEYS_EXPIRE_SOON = f'Ключ %s заканчивается %s\n'
+
+
+PROLONG_SUCCESS = 'Платеж на сумму %s принят, ключ %s подлен до %s'
+
+ADD_NEW_SUCCESS = 'Платеж на сумму %s принят, ключ %s приобретен и действителен до %s'

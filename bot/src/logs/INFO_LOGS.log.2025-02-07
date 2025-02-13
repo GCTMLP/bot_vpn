@@ -1,0 +1,75 @@
+2025-02-06 16:56:46,565 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:48 Start
+2025-02-06 16:56:46,565 ERROR    handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:61 Unknown error in cmd_start: name 'inh' is not defined
+2025-02-06 17:04:03,778 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:48 Start
+2025-02-06 17:04:03,779 ERROR    handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:61 Unknown error in cmd_start: name 'inh' is not defined
+2025-02-06 18:21:41,261 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:48 Ivan I_Lipa started bot
+2025-02-06 18:22:27,992 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:69 Ivan I_Lipa whant to bye new key
+2025-02-06 18:22:30,846 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:124 Ivan I_Lipa chose period 2 to prolong
+2025-02-06 18:22:50,510 ERROR    handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:204 Unknown error in successful_payment: cannot access local variable 'payment_info' where it is not associated with a value
+2025-02-06 18:24:06,458 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:48 Ivan I_Lipa started bot
+2025-02-06 18:24:08,959 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:69 Ivan I_Lipa whant to bye new key
+2025-02-06 18:24:12,180 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:124 Ivan I_Lipa chose period 2 to prolong
+2025-02-06 18:24:27,561 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:186 Пользователь Ivan 
+        I_Lipa оплатил сумму 190.0
+2025-02-06 18:25:41,088 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:94 Ivan I_Lipa start prolong his key
+2025-02-06 18:25:43,585 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:108 Ivan I_Lipa chose key all.ovpn to prolong
+2025-02-06 18:25:45,685 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:124 Ivan I_Lipa chose period 1 to prolong
+2025-02-06 18:25:45,685 ERROR    handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:174 Unknown error in pay_old_key: name 'keys_names' is not defined
+2025-02-06 18:27:14,811 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:94 Ivan I_Lipa start prolong his key
+2025-02-06 18:27:17,275 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:108 Ivan I_Lipa chose key all.ovpn to prolong
+2025-02-06 18:27:21,893 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:124 Ivan I_Lipa chose period 1 to prolong
+2025-02-06 18:27:37,449 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:187 Пользователь Ivan 
+        I_Lipa оплатил сумму 200.0
+2025-02-06 18:31:32,177 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:48 Ivan I_Lipa started bot
+2025-02-06 18:31:33,985 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:94 Ivan I_Lipa start prolong his key
+2025-02-06 18:31:35,582 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:108 Ivan I_Lipa chose key all.ovpn to prolong
+2025-02-06 18:31:37,564 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:124 Ivan I_Lipa chose period 2 to prolong
+2025-02-06 18:31:55,433 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:187 Пользователь Ivan         I_Lipa оплатил сумму 570.0
+2025-02-06 18:33:13,808 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:94 Ivan I_Lipa start prolong his key
+2025-02-06 18:33:14,088 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:94 Ivan I_Lipa start prolong his key
+2025-02-06 18:33:16,234 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:108 Ivan I_Lipa chose key all.ovpn to prolong
+2025-02-06 18:33:23,237 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:124 Ivan I_Lipa chose period 2 to prolong
+2025-02-06 18:34:38,075 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:48 Ivan I_Lipa started bot
+2025-02-06 18:34:38,197 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:94 Ivan I_Lipa start prolong his key
+2025-02-06 18:34:38,209 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:94 Ivan I_Lipa start prolong his key
+2025-02-06 18:34:43,223 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:108 Ivan I_Lipa chose key all.ovpn to prolong
+2025-02-06 18:34:46,096 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:124 Ivan I_Lipa chose period 3 to prolong
+2025-02-07 11:29:52,448 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-07 11:29:56,251 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:78 Ivan I_Lipa whant to bye new key
+2025-02-07 11:29:59,455 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:137 Ivan I_Lipa chose period 2 to prolong
+2025-02-07 11:29:59,456 ERROR    handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:188 Unknown error in pay_old_key: 'key'
+2025-02-07 11:31:48,586 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-07 11:31:51,505 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:78 Ivan I_Lipa whant to bye new key
+2025-02-07 11:31:53,154 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:137 Ivan I_Lipa chose period 2 to prolong
+2025-02-07 11:32:01,912 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:105 Ivan I_Lipa start prolong his key
+2025-02-07 11:32:04,586 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:120 Ivan I_Lipa chose key 55.ovpn to prolong
+2025-02-07 11:32:06,426 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:137 Ivan I_Lipa chose period 2 to prolong
+2025-02-07 11:32:13,910 INFO     handlers /Users/lipa/Documents/StartUP/bot_vpn/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-07 13:49:24,145 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-07 13:49:24,145 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-07 13:49:24,237 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-07 13:49:24,237 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-07 13:49:24,241 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-07 13:49:24,241 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-10 10:51:24,085 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-10 10:51:27,326 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 10:52:31,085 ERROR    admin_handlers /code/src/handlers/admin_handlers.py:59 Unknown error in show_not_prolong: Telegram server says - Bad Request: message text is empty
+2025-02-10 10:52:58,112 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 10:59:16,444 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-10 10:59:23,347 INFO     handlers /code/src/handlers/handlers.py:105 Ivan I_Lipa start prolong his key
+2025-02-10 10:59:33,480 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 11:00:08,097 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 11:00:27,987 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-10 11:00:32,085 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 11:00:40,856 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 11:01:32,639 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-10 11:01:56,020 INFO     handlers /code/src/handlers/handlers.py:78 Ivan I_Lipa whant to bye new key
+2025-02-10 11:03:20,297 INFO     handlers /code/src/handlers/handlers.py:55 Ivan I_Lipa started bot
+2025-02-10 11:03:25,960 INFO     handlers /code/src/handlers/handlers.py:78 Ivan I_Lipa whant to bye new key
+2025-02-10 11:03:29,203 INFO     handlers /code/src/handlers/handlers.py:137 Ivan I_Lipa chose period 2 to prolong
+2025-02-10 11:03:42,110 INFO     handlers /code/src/handlers/handlers.py:105 Ivan I_Lipa start prolong his key
+2025-02-10 11:04:40,615 INFO     handlers /code/src/handlers/handlers.py:105 Ivan I_Lipa start prolong his key
+2025-02-10 11:04:44,042 INFO     handlers /code/src/handlers/handlers.py:120 Ivan I_Lipa chose key 55.ovpn to prolong
+2025-02-10 11:04:46,105 INFO     handlers /code/src/handlers/handlers.py:137 Ivan I_Lipa chose period 2 to prolong
+2025-02-10 11:04:59,729 INFO     handlers /code/src/handlers/handlers.py:90 Ivan I_Lipa checked his keys
+2025-02-12 15:15:40,614 INFO     handlers /code/src/handlers/handlers.py:78 Ivan I_Lipa whant to bye new key

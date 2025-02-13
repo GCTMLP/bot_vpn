@@ -9,7 +9,9 @@ from text.keyboard_text import(
     NEW_KEY,
     PROLONG_KEY,
     MY_KEYS,
+    INSTRUCTION,
     HELP,
+    PAY_TEXT
 )
 
 def chose_doing_markup():
@@ -17,6 +19,7 @@ def chose_doing_markup():
         [InlineKeyboardButton(text=NEW_KEY, callback_data='new')], 
         [InlineKeyboardButton(text=PROLONG_KEY, callback_data='prolong')],
         [InlineKeyboardButton(text=MY_KEYS, callback_data='my_keys')], 
+        [InlineKeyboardButton(text=INSTRUCTION, callback_data='instruction')], 
         [InlineKeyboardButton(text=HELP, callback_data='help')]
     ]
     return InlineKeyboardMarkup(inline_keyboard=inline_kb_list)
@@ -33,5 +36,12 @@ def choose_period_kb():
 
 def choose_keys_kb(key_names):
     inline_kb_list = [[InlineKeyboardButton(text=name, callback_data=name)] for name in key_names]
-    inline_kb_list.append([InlineKeyboardButton(text=PROLONG_ALL, callback_data='all')])
+    inline_kb_list.append([InlineKeyboardButton(text=PROLONG_ALL, callback_data='all.ovpn')])
+    inline_kb_list.append([InlineKeyboardButton(text=MAIN_MENU, callback_data='cancel')])
+    return InlineKeyboardMarkup(inline_keyboard=inline_kb_list)
+
+
+def pay_markup(summ):
+    inline_kb_list = [[InlineKeyboardButton(text=PAY_TEXT % (summ), pay=True)],
+                    [InlineKeyboardButton(text=MAIN_MENU, callback_data='cancel')]]
     return InlineKeyboardMarkup(inline_keyboard=inline_kb_list)
