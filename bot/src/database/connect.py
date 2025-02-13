@@ -1,10 +1,14 @@
 from contextlib import AbstractContextManager, contextmanager
 from typing import Callable
-
+import logging
+from logging.config import dictConfig
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, scoped_session, sessionmaker
 
-from src.config import DB_ISOLATION_LEVEL, DB_URL
+from src.config import DB_ISOLATION_LEVEL, DB_URL, LOGGING_CONFIG
+
+ERROR_LOG = logging.getLogger("error")
+dictConfig(LOGGING_CONFIG)
 
 class Base(DeclarativeBase):
     pass
@@ -23,8 +27,8 @@ def db_session() -> Callable[..., AbstractContextManager[Session]]:
     session: Session = session_factory()
     try:
         yield session
-    except Exception:
+    except Exception as e:
         session.rollback()
-        raise
+        ERROR_LOG.error(f'ERROR in create db_session {str(e)}')
     finally:
         session.close()

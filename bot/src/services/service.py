@@ -8,8 +8,19 @@ from sqlalchemy import select, func
 from dateutil.relativedelta import relativedelta
 from datetime import date, timedelta
 import shutil
+import logging
+from logging.config import dictConfig
 
-from config import NEW_KEY_DIR, USED_KEY_DIR, LOG
+from config import (
+    NEW_KEY_DIR, 
+    USED_KEY_DIR, 
+    LOGGING_CONFIG
+)
+
+
+ERROR_LOG = logging.getLogger("error")
+INFO_LOG = logging.getLogger("info")
+dictConfig(LOGGING_CONFIG)
 
 
 class UserService:
@@ -27,7 +38,7 @@ class UserService:
                                     'username':user_data.username})
             return 'new'
         except Exception as e:
-            raise Exception(f'error in save_start_user {str(e)}')
+            ERROR_LOG.error(f'error in save_start_user {str(e)}')
 
     def get_all_users(self):
         try:
@@ -37,7 +48,7 @@ class UserService:
                                 username=user.username,
                                 create_at=user.crated_at) for user in users]
         except Exception as e:
-            raise Exception(f'error in get_all_users {str(e)}')
+            ERROR_LOG.error(f'error in get_all_users {str(e)}')
 
 
 class KeyService:
@@ -56,7 +67,7 @@ class KeyService:
             keys = self._key_repo.get_all({'user_id':user_id})
             return [key.key_name for key in keys]
         except Exception as e:
-            raise Exception(f'error in get_user_keys {str(e)}')
+            ERROR_LOG.error(f'error in get_user_keys {str(e)}')
 
     def get_user_keys_dates(self, tg_user_id: int) -> list:
         try:
@@ -65,7 +76,7 @@ class KeyService:
             return [{'name':key.key_name, 
                     'expire_at':key.expire_at} for key in keys]
         except Exception as e:
-            raise Exception(f'error in get_user_keys_dates {str(e)}')
+            ERROR_LOG.error(f'error in get_user_keys_dates {str(e)}')
 
     def set_new_key(self, tg_id, period):
         try:
@@ -84,7 +95,7 @@ class KeyService:
             shutil.move(NEW_KEY_DIR+name, USED_KEY_DIR+name)
             return str(expire_date)+' '+str(date_start_time), name
         except Exception as e:
-            raise Exception(f'error in set_new_key {str(e)}')
+            ERROR_LOG.error(f'error in set_new_key {str(e)}')
 
     def get_expired_keys(self, today=False, soon=False):
         try:
@@ -100,7 +111,7 @@ class KeyService:
             keys_expire = self._key_repo.native_sql(keys_expire_sql)
             return keys_expire
         except Exception as e:
-            raise Exception(f'error in get_expired_keys {str(e)}')
+            ERROR_LOG.error(f'error in get_expired_keys {str(e)}')
 
     def get_expired_today_keys(self):
         try:
@@ -111,7 +122,7 @@ class KeyService:
             keys_today_expire = self._key_repo.native_sql(keys_expire_sql)
             return keys_today_expire
         except Exception as e:
-            raise Exception(f'error in get_expired_today_keys {str(e)}')
+            ERROR_LOG.error(f'error in get_expired_today_keys {str(e)}')
 
     def get_users_keys(self) -> dict:
         try:
@@ -130,7 +141,7 @@ class KeyService:
                                                 'expire_at':key.expire_at}]
             return data
         except Exception as e:
-            raise Exception(f'error in get_users_keys {str(e)}')
+            ERROR_LOG.error(f'error in get_users_keys {str(e)}')
 
     def prolong_key(self, key_names, prolong_month):
         try:
@@ -141,4 +152,4 @@ class KeyService:
                 self._key_repo.update_one(key, {'expire_at':str(new_expire)+" "+str(time)})
             return new_expire
         except Exception as e:
-            raise Exception(f'error in prolong_key {str(e)}')
+            ERROR_LOG.error(f'error in prolong_key {str(e)}')

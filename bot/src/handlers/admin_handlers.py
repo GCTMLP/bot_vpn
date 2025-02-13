@@ -1,6 +1,8 @@
 from aiogram.types import CallbackQuery, Message, ReplyKeyboardRemove
 from aiogram import F
 from aiogram.filters import Command
+import logging
+from logging.config import dictConfig
 
 from services.shemas import UserShema
 from connector import dp, bot
@@ -9,7 +11,8 @@ from text.keyboard_text import (
     WRITE_MESSAGE_TO_ALL,
     ADMIN_SHOW_NOT_PROLONG,
     ADMIN_SHOW_USERS,
-    ADMIN_SHOW_USERS_KEYS
+    ADMIN_SHOW_USERS_KEYS,
+    WRITE_MESSAGE_TO_ONE
 )
 from text.message_text import (
     USERS_DATA,
@@ -21,8 +24,16 @@ from text.message_text import (
 from keyboards.reply_keyboards import (
     staff_kb
 )
+from keyboards.inline_keyboards import(
+    chose_doing_markup
+)
 from services.depencies import user_service, key_service
-from config import LOG
+from config import LOGGING_CONFIG
+
+ERROR_LOG = logging.getLogger("error")
+INFO_LOG = logging.getLogger("info")
+
+dictConfig(LOGGING_CONFIG)
 
 
 @dp.message(IsAdmin(), Command('admin'))
@@ -41,7 +52,7 @@ async def show_users(message: Message):
         await message.answer(result,
                             reply_markup=staff_kb())
     except Exception as e:
-        LOG.error(f'Unknown error in show_users: {str(e)}')
+        ERROR_LOG.error(f'Unknown error in show_users: {str(e)}')
 
 @dp.message(IsAdmin(), F.text == ADMIN_SHOW_NOT_PROLONG)
 async def show_not_prolong(message: Message):
@@ -56,7 +67,7 @@ async def show_not_prolong(message: Message):
         await message.answer(result,
                             reply_markup=staff_kb())
     except Exception as e:
-        LOG.error(f'Unknown error in show_not_prolong: {str(e)}')
+        ERROR_LOG.error(f'Unknown error in show_not_prolong: {str(e)}')
 
 @dp.message(IsAdmin(), F.text == ADMIN_SHOW_USERS_KEYS)
 async def show_users_keys(message: Message):
@@ -70,7 +81,7 @@ async def show_users_keys(message: Message):
         await message.answer(result,
                         reply_markup=staff_kb())
     except Exception as e:
-        LOG.error(f'Unknown error in show_users_keys: {str(e)}')
+        ERROR_LOG.error(f'Unknown error in show_users_keys: {str(e)}')
 
 @dp.message(IsAdmin(), F.text == WRITE_MESSAGE_TO_ALL)
 async def write_to_all(message: Message):
@@ -78,8 +89,18 @@ async def write_to_all(message: Message):
         await message.answer("Напишите сообщение, начинающееся с 'msg'",
                         reply_markup=ReplyKeyboardRemove())
     except Exception as e:
-        LOG.error(f'Unknown error in write_to_all: {str(e)}')
-   
+        ERROR_LOG.error(f'Unknown error in write_to_all: {str(e)}')
+
+
+@dp.message(IsAdmin(), F.text == WRITE_MESSAGE_TO_ONE)
+async def write_to_one(message: Message):
+    try:
+        await message.answer("Напишите сообщение, начинающееся с 'id' затем '&id человека', затем &сообщение",
+                        reply_markup=ReplyKeyboardRemove())
+    except Exception as e:
+        ERROR_LOG.error(f'Unknown error in write_to_one: {str(e)}')
+
+
 @dp.message(IsAdmin(), F.text.contains('msg'))
 async def write_to_all_msg(message: Message):
     try:
@@ -87,4 +108,13 @@ async def write_to_all_msg(message: Message):
         for user in users:
             bot.send_message(text=str(message.text), chat_id=user.tg_id)
     except Exception as e:
-        LOG.error(f'Unknown error in write_to_all_msg: {str(e)}')
+        ERROR_LOG.error(f'Unknown error in write_to_all_msg: {str(e)}')
+
+
+@dp.message(IsAdmin(), F.text.contains('id'))
+async def write_to_one_msg(message: Message):
+    try:
+        _, user_id, message  = message.text.split('&')
+        await bot.send_message(chat_id=user_id, text=f"Ответ поддержки: \n{message}", reply_markup=chose_doing_markup())
+    except Exception as e:
+        ERROR_LOG.error(f'Unknown error in write_to_one_msg: {str(e)}')

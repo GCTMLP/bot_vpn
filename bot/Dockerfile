@@ -14,6 +14,7 @@ COPY  alembic.ini /code/
 COPY migration /code/migration
 COPY keys /code/keys
 COPY src /code/src
+COPY instruction /code/instruction
 COPY .env /code/
 
 ENV PYTHONPATH="/code:"

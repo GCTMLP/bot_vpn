@@ -8,6 +8,8 @@ from os.path import join, dirname
 from pathlib import Path
 from string import Template
 
+ADMINS = [297822605]
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -34,58 +36,55 @@ PRICE = {
     '6': 490
 }
 
-PAYMENTS_TOKEN='381764678:TEST:109740'
-ADMINS = [297822605]
-
+PAYMENTS_TOKEN=env.str("PAYMENTS_TOKEN")
 
 BASE_DIR = Path(__file__).resolve().parent
 LOG_DIR = BASE_DIR / 'logs'
 
-error_file_log_lvl = 'ERROR'
-info_file_log_lvl = 'INFO'
 
-LOGGER_NAME_ERROR = f'{error_file_log_lvl}_LOGS'
-LOGGER_NAME_INFO = f'{info_file_log_lvl}_LOGS'
-
-LOGGER_NAME = 'LOGS'
-
-error_log_file = LOG_DIR / f'{LOGGER_NAME_ERROR}.log'
-
-info_log_file = LOG_DIR / f'{LOGGER_NAME_INFO}.log'
-
-
-file_format = '%(asctime)-15s %(levelname)-8s %(module)s ' \
-              '%(pathname)s:%(lineno)d %(message)s'
-
-LOGGER_CONFIG = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'file_format': {
-            'format': '%(asctime)-15s | %(levelname)-8s | %(pathname)s %(funcName)s():%(lineno)d | %(message)s',
-            'datefmt': '%Y-%m-%d %H:%M:%S',
+LOGGING_CONFIG = {
+    "version": 1,
+    "disable_existing_loggers": True,
+    "formatters": {
+        "standard": {
+            "format": "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
         },
-        'console_format': {
-            'format': '%(asctime)-15s | %(levelname)-8s | %(module)s %(funcName)s():%(lineno)d | %(message)s',
-            'datefmt': '%Y-%m-%d %H:%M:%S',
-        }
-    }
+    },
+    "handlers": {
+        "default": {
+            "level": "INFO",
+            "formatter": "standard",
+            "class": "logging.StreamHandler",
+            "stream": "ext://sys.stdout",
+        },
+        "info": {
+            "level": "INFO",
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "formatter": "standard",
+            "filename": LOG_DIR / "info.log",
+            "when": "D",
+            "backupCount": 5,
+        },
+        "error": {
+            "level": "ERROR",
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "formatter": "standard",
+            "filename": LOG_DIR / "error.log",
+            "when": "D",
+            "backupCount": 5,
+        },
+    },
+    "loggers": {
+        "info": {
+            "handlers": ["info", "default"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "error": {
+            "handlers": ["error", "default"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+    },
 }
 
-
-LOG = logging.getLogger(LOGGER_NAME)
-log_formatter = logging.Formatter(file_format)
-
-
-ERROR_LOG = logging.handlers.TimedRotatingFileHandler(error_log_file, when='D')
-ERROR_LOG.setFormatter(log_formatter)
-ERROR_LOG.setLevel(logging.ERROR)
-LOG.addHandler(ERROR_LOG)
-
-INFO_LOG = logging.handlers.TimedRotatingFileHandler(info_log_file, when='D')
-INFO_LOG.setFormatter(log_formatter)
-INFO_LOG.setLevel(logging.INFO)
-LOG.addHandler(INFO_LOG)
-
-
-LOG.setLevel(logging.INFO)

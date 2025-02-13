@@ -1,1 +1,0 @@
-2025-02-10 10:52:31,085 ERROR    admin_handlers /code/src/handlers/admin_handlers.py:59 Unknown error in show_not_prolong: Telegram server says - Bad Request: message text is empty

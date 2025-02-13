@@ -45,3 +45,25 @@ def pay_markup(summ):
     inline_kb_list = [[InlineKeyboardButton(text=PAY_TEXT % (summ), pay=True)],
                     [InlineKeyboardButton(text=MAIN_MENU, callback_data='cancel')]]
     return InlineKeyboardMarkup(inline_keyboard=inline_kb_list)
+
+
+def buy_key_if_empty():
+    inline_kb_list = [
+        [InlineKeyboardButton(text=NEW_KEY, callback_data='new')], 
+        [InlineKeyboardButton(text=MAIN_MENU, callback_data='cancel')]
+    ]
+    return InlineKeyboardMarkup(inline_keyboard=inline_kb_list)
+
+
+def help_twice():
+    inline_kb_list = [
+        [InlineKeyboardButton(text=NEW_KEY, callback_data='help2')], 
+        [InlineKeyboardButton(text=MAIN_MENU, callback_data='cancel')]
+    ]
+    return InlineKeyboardMarkup(inline_keyboard=inline_kb_list)
+
+def help_cancel():
+    inline_kb_list = [
+        [InlineKeyboardButton(text=MAIN_MENU, callback_data='cancel')]
+    ]
+    return InlineKeyboardMarkup(inline_keyboard=inline_kb_list)
