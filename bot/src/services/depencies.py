@@ -1,6 +1,6 @@
 from database.models import Users, Keys, Payments
 from database.repository import SQLAlchemyRepository
-from services.service import UserService, KeyService
+from services.service import UserService, KeyService, PaymentService
 
 class UserRepository(SQLAlchemyRepository):
     model = Users
@@ -18,4 +18,4 @@ def key_service():
     return KeyService(UserRepository, KeyRepository)
 
 def payment_service():
-    return KeyService(PaymentRepository, UserRepository)
+    return PaymentService(PaymentRepository, UserRepository)
