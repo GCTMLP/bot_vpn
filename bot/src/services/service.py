@@ -165,7 +165,7 @@ class PaymentService:
 
     def save_payment(self, suma, tg_id):
         try:
-            user_id = get_user_id(tg_user_id)
+            user_id = self.get_user_id(tg_id)
             self._payment_repo.add_one({'sum': suma, 'user_id': user_id})
         except Exception as e:
             ERROR_LOG.error(f'error in save_payment {str(e)}')
