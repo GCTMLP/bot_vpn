@@ -147,7 +147,7 @@ async def new_key(call: CallbackQuery, state: FSMContext):
 
 @dp.callback_query(F.data == 'new')
 async def new_key(call: CallbackQuery, state: FSMContext):
-    INFO_LOG.info(f'{call.from_user.first_name}'
+    INFO_LOG.info(f'{call.from_user.first_name} '
                 f'{call.from_user.username} whant to bye new key')
     try:
         await call.message.answer(CHOOSE_PERIOD, 
@@ -160,7 +160,7 @@ async def new_key(call: CallbackQuery, state: FSMContext):
 
 @dp.callback_query(F.data == 'my_keys')
 async def all_key(call: CallbackQuery):
-    INFO_LOG.info(f'{call.from_user.first_name}' 
+    INFO_LOG.info(f'{call.from_user.first_name} ' 
                 f'{call.from_user.username} checked his keys')
     try:
         keys = key_service().get_user_keys_dates(call.from_user.id)
@@ -187,7 +187,7 @@ async def prolong_key(call: CallbackQuery, state: FSMContext):
                             reply_markup=choose_keys_kb(keys_names))
         await state.update_data(doing='prolong')
         await state.set_state(ProlongKey.key)
-        INFO_LOG.info(f'{call.from_user.first_name}'
+        INFO_LOG.info(f'{call.from_user.first_name} '
                     f'{call.from_user.username} start prolong his key')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in prolong_key: {str(e)}')
@@ -205,8 +205,8 @@ async def chose_period_old_key(call: CallbackQuery, state: FSMContext):
             list_key_chosen = [key_chosen]
         await state.update_data(key=list_key_chosen)
         await state.set_state(ProlongKey.period)
-        INFO_LOG.info(f'{call.from_user.first_name}'
-                    f'{call.from_user.username} chose key'
+        INFO_LOG.info(f'{call.from_user.first_name} '
+                    f'{call.from_user.username} chose key '
                     f'{key_chosen} to prolong')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in chose_period_old_key: {str(e)}')
@@ -224,8 +224,8 @@ async def pay_old_key(call: CallbackQuery, state: FSMContext):
             keys_names = state_data['key']
             description=f"Продление VPN ключей {' '.join(keys_names)} для установки VPN соединения с сервером",
             amount = PRICE[period]*len(keys_names)*100
-        INFO_LOG.info(f'{call.from_user.first_name}'
-                    f'{call.from_user.username} chose period'
+        INFO_LOG.info(f'{call.from_user.first_name} '
+                    f'{call.from_user.username} chose period '
                     f'{period} to prolong')
         await bot.send_invoice(call.message.chat.id,
                             title="Ключ VPN",

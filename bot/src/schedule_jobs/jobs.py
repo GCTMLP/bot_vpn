@@ -35,6 +35,7 @@ async def send_message_to_user_expired_today(bot: Bot):
 
 async def send_message_to_user_expired_soon(bot: Bot):
     try:
+        INFO_LOG.info('in soon')
         result_data = {}
         not_prolong_keys = key_service().get_expired_keys(soon=True)
         for not_prolong_key in not_prolong_keys:
@@ -48,6 +49,6 @@ async def send_message_to_user_expired_soon(bot: Bot):
             result_text = USERS_KEYS_EXPIRE_TEXT_SOON
             for one_data in data:
                 result_text+=USERS_KEYS_EXPIRE % (one_data['key_name'])
-            await bot.send_message(text=result_text, chat_id=userid)
+            await bot.send_message(text=result_text, chat_id=userid, reply_markup=chose_doing_markup())
     except Exception as e:
         ERROR_LOG.error(f'Uknown error in send_message_to_user_expired_today {str(e)}')

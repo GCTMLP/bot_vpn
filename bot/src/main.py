@@ -17,7 +17,7 @@ from text.keyboard_text import (
     HELP
 )
 
-every_day_cron = '0 11 * * *'
+every_day_cron = '0 9 * * *'
 every_minute_cron = '* * * * * '
 
 def set_scheduled_jobs(scheduler, bot, *args, **kwargs):

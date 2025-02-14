@@ -105,7 +105,7 @@ class KeyService:
             if today:
                 keys_expire_sql = select(self._key_repo.model).filter(func.date(self._key_repo.model.expire_at) == now)
             elif soon:
-                keys_expire_sql = select(self._key_repo.model).filter((func.date(self._key_repo.model.expire_at)+timedelta(days=1)) == now)
+                keys_expire_sql = select(self._key_repo.model).filter(func.date(self._key_repo.model.expire_at)-timedelta(days=1) == now)
             else:
                 keys_expire_sql = select(self._key_repo.model).filter(self._key_repo.model.expire_at < now)
             keys_expire = self._key_repo.native_sql(keys_expire_sql)
