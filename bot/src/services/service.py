@@ -145,12 +145,14 @@ class KeyService:
 
     def prolong_key(self, key_names, prolong_month):
         try:
+            new_expires = []
             for key_name in key_names:
                 key = self._key_repo.get_one({'key_name': key_name})
                 time = key.expire_at.time()
                 new_expire = key.expire_at.date() + relativedelta(months=int(prolong_month))
+                new_expires.append(new_expire)
                 self._key_repo.update_one(key, {'expire_at':str(new_expire)+" "+str(time)})
-            return new_expire
+            return new_expires
         except Exception as e:
             ERROR_LOG.error(f'error in prolong_key {str(e)}')
 
