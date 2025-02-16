@@ -93,7 +93,7 @@ class KeyService:
             self._key_repo.update_one(added_key, 
                                     {'expire_at': str(expire_date)+' '+str(date_start_time)})
             shutil.move(NEW_KEY_DIR+name, USED_KEY_DIR+name)
-            return str(expire_date)+' '+str(date_start_time), name
+            return str(expire_date), name
         except Exception as e:
             ERROR_LOG.error(f'error in set_new_key {str(e)}')
 

@@ -1,1 +1,1 @@
-2025-02-13 20:06:59,631 - ERROR - error - error in save_payment name 'tg_user_id' is not defined
+2025-02-16 15:24:44,075 - ERROR - error - Unknown error in successful_payment: not enough values to unpack (expected 3, got 1)

@@ -297,7 +297,7 @@ async def successful_payment(message: Message,  state: FSMContext):
             await message.answer_document(FSInputFile(USED_KEY_DIR+filename))
             await bot.send_message(message.chat.id, 
                                 ADD_NEW_SUCCESS %(filename, 
-                                                turn_date(new_expire.split(' ')[0])),
+                                                turn_date(str(new_expire))),
                                 reply_markup=chose_doing_markup())
         payment_service().save_payment(payment_info.total_amount/100, message.chat.id)
     except Exception as e:
