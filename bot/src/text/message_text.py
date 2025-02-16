@@ -57,7 +57,7 @@ USERS_KEYS_EXPIRE_TEXT_SOON = """Дружеское напоминание 🤓
 
 
 PROLONG_SUCCESS_START = "Спасибо! Оплата прошла ✅ \n"
-PROLONG_SUCCESS_MIDDLE = "🔸 %s\n"
+PROLONG_SUCCESS_MIDDLE = "🔸 %s активен до %s ✅\n"
 PROLONG_SUCCESS_END = "активны до %s ✅"
 
 ADD_NEW_SUCCESS = """Вау! Теперь у тебя есть личный ключ VPN 🤟

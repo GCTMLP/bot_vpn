@@ -286,9 +286,9 @@ async def successful_payment(message: Message,  state: FSMContext):
         if state_data['doing'] == 'prolong':
             new_expire = key_service().prolong_key(state_data['key'], state_data['month'])
             result_msg = PROLONG_SUCCESS_START
-            for key in state_data['key']:
-                result_msg = PROLONG_SUCCESS_MIDDLE % key
-            result_msg += PROLONG_SUCCESS_END % turn_date(new_expire)
+            for key, expire in zip(state_data['key'], new_expire):
+                result_msg += PROLONG_SUCCESS_MIDDLE % (key, expire)
+            #result_msg += PROLONG_SUCCESS_END % turn_date(str(new_expire))
             await bot.send_message(message.chat.id, 
                                 result_msg,
                                 reply_markup=chose_doing_markup())

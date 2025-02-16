@@ -1,1 +1,4 @@
 2025-02-16 15:24:44,075 - ERROR - error - Unknown error in successful_payment: not enough values to unpack (expected 3, got 1)
+2025-02-16 16:33:05,828 - ERROR - error - Unknown error in successful_payment: 'Logger' object is not callable
+2025-02-16 17:18:32,711 - ERROR - error - Unknown error in successful_payment: 'datetime.date' object has no attribute 'split'
+2025-02-16 17:29:53,228 - ERROR - error - Unknown error in successful_payment: not enough values to unpack (expected 3, got 1)
