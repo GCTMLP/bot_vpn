@@ -305,6 +305,14 @@ async def successful_payment(message: Message,  state: FSMContext):
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in successful_payment: {str(e)}')
 
+@dp.message(Command("dice"))
+async def handler_game(message: Message):
+    try:
+        await bot.send_dice(message.from_user.id)
+        await message.answer(GAME_MESSAGE, 
+                            reply_markup=help_cancel())
+    except Exception as e:
+        ERROR_LOG.error(f'Unknown error in handler_game: {str(e)}')
 
 @dp.message()
 async def bad_message(message: Message):
@@ -316,12 +324,3 @@ async def bad_message(message: Message):
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in bad_message: {str(e)}')
 
-
-@dp.message(Command("dice"))
-async def handler_game(message: types.Message):
-    try:
-        await bot.send_dice(message.from_user.id)
-        await message.answer(GAME_MESSAGE, 
-                            reply_markup=help_cancel())
-    except Exception as e:
-        ERROR_LOG.error(f'Unknown error in handler_game: {str(e)}')
