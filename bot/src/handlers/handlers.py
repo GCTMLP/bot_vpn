@@ -36,7 +36,9 @@ from text.message_text import (
     KEYS_LIST_EMPTY,
     HELP,
     HELP2,
-    INSTRUCTION
+    INSTRUCTION,
+    BAG_MESSAGE,
+    GAME_MESSAGE
 )
 from text.keyboard_text import (
     NEW_KEY,
@@ -302,3 +304,24 @@ async def successful_payment(message: Message,  state: FSMContext):
         payment_service().save_payment(payment_info.total_amount/100, message.chat.id)
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in successful_payment: {str(e)}')
+
+
+@dp.message()
+async def bad_message(message: Message):
+    try:
+        await message.answer(BAG_MESSAGE, 
+                            reply_markup=chose_doing_markup())
+        INFO_LOG.info(f'''Пользователь {message.from_user.first_name} \
+        {message.from_user.username} написал {message.text}''')
+    except Exception as e:
+        ERROR_LOG.error(f'Unknown error in bad_message: {str(e)}')
+
+
+@dp.message(Command("dice"))
+async def handler_game(message: types.Message):
+    try:
+        await bot.send_dice(message.from_user.id)
+        await message.answer(GAME_MESSAGE, 
+                            reply_markup=help_cancel())
+    except Exception as e:
+        ERROR_LOG.error(f'Unknown error in handler_game: {str(e)}')
