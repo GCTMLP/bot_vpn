@@ -1,8 +1,0 @@
-2025-02-19 15:16:22,075 - ERROR - error - ERROR in create db_session (psycopg2.OperationalError) could not translate host name "bot_db" to address: Temporary failure in name resolution
-
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-02-19 15:16:22,075 - ERROR - error - error in get_user_keys_dates 'NoneType' object has no attribute 'id'
-2025-02-19 15:16:22,079 - ERROR - error - ERROR in create db_session (psycopg2.OperationalError) could not translate host name "bot_db" to address: Temporary failure in name resolution
-
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-02-19 15:16:22,079 - ERROR - error - error in get_user_keys_dates 'NoneType' object has no attribute 'id'
