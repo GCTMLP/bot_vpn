@@ -188,30 +188,49 @@ async def prolong_key(call: CallbackQuery, state: FSMContext):
         await call.message.answer(CHOOSE_KEY, 
                             reply_markup=choose_keys_kb(keys_names))
         await state.update_data(doing='prolong')
+        await state.update_data(selected = [])
         await state.set_state(ProlongKey.key)
+        await state.update_data(all_keys=keys_names)
         INFO_LOG.info(f'{call.from_user.first_name} '
                     f'{call.from_user.username} start prolong his key')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in prolong_key: {str(e)}')
 
 
-@dp.callback_query(ProlongKey.key, F.data.endswith('ovpn'))
-async def chose_period_old_key(call: CallbackQuery, state: FSMContext):
+@dp.callback_query(ProlongKey.key, F.data.contains('ovpn'))
+async def chose_keys_old_key(call: CallbackQuery, state: FSMContext):
     try:
-        key_chosen = call.data
-        await call.message.answer(CHOOSE_PERIOD, 
-                            reply_markup=choose_period_kb())
-        if 'all' in key_chosen:
-            list_key_chosen = key_service().get_user_keys(call.from_user.id)
+        state_data = await state.get_data()
+        if 'pay' in call.data:
+            selected_keys = state_data['selected']
+            selected_keys_clear = [key.rstrip(' ✅') for key in  selected_keys]
+            await state.update_data(key=selected_keys_clear)
+            await state.set_state(ProlongKey.period)
+            await call.message.answer(CHOOSE_PERIOD, 
+                                    reply_markup=choose_period_kb())
+            INFO_LOG.info(f'{call.from_user.first_name} '
+                            f'{call.from_user.username} chose key '
+                            f'{selected_keys_clear} to prolong')
         else:
-            list_key_chosen = [key_chosen]
-        await state.update_data(key=list_key_chosen)
-        await state.set_state(ProlongKey.period)
-        INFO_LOG.info(f'{call.from_user.first_name} '
-                    f'{call.from_user.username} chose key '
-                    f'{key_chosen} to prolong')
+            key_chosen = call.data
+            INFO_LOG.info(f'{call.from_user.first_name} '
+                            f'{call.from_user.username} in select key '
+                            f'select {key_chosen} to prolong')
+            selected_keys = state_data['selected']
+            if 'all' in key_chosen:
+                selected_keys = key_service().get_user_keys(call.from_user.id)
+            elif '✅' not in key_chosen:
+                selected_keys.append(key_chosen)
+            else:
+                selected_keys.remove(key_chosen.rstrip(' ✅'))
+            await state.update_data(selected=selected_keys)
+            keys_names = state_data['all_keys']
+            await bot.edit_message_text(text=CHOOSE_KEY,
+                                    chat_id=call.message.chat.id,
+                                    message_id=call.message.message_id, 
+                                    reply_markup=choose_keys_kb(keys_names, selected_keys))
     except Exception as e:
-        ERROR_LOG.error(f'Unknown error in chose_period_old_key: {str(e)}')
+        ERROR_LOG.error(f'Unknown error in chose_keys_old_key: {str(e)}')
 
 
 @dp.callback_query(ProlongKey.period, F.data.startswith('mnth'))
@@ -305,6 +324,14 @@ async def successful_payment(message: Message,  state: FSMContext):
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in successful_payment: {str(e)}')
 
+@dp.message(Command("dice"))
+async def handler_game(message: Message):
+    try:
+        await bot.send_dice(message.from_user.id)
+        await message.answer(GAME_MESSAGE, 
+                            reply_markup=help_cancel())
+    except Exception as e:
+        ERROR_LOG.error(f'Unknown error in handler_game: {str(e)}')
 
 @dp.message()
 async def bad_message(message: Message):
@@ -316,9 +343,9 @@ async def bad_message(message: Message):
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in bad_message: {str(e)}')
 
-
+        
 @dp.message(Command("dice"))
-async def handler_game(message: types.Message):
+async def handler_game(message: Message):
     try:
         await bot.send_dice(message.from_user.id)
         await message.answer(GAME_MESSAGE, 
