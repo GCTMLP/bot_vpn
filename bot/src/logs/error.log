@@ -1,4 +1,349 @@
-2025-02-16 15:24:44,075 - ERROR - error - Unknown error in successful_payment: not enough values to unpack (expected 3, got 1)
-2025-02-16 16:33:05,828 - ERROR - error - Unknown error in successful_payment: 'Logger' object is not callable
-2025-02-16 17:18:32,711 - ERROR - error - Unknown error in successful_payment: 'datetime.date' object has no attribute 'split'
-2025-02-16 17:29:53,228 - ERROR - error - Unknown error in successful_payment: not enough values to unpack (expected 3, got 1)
+2025-02-20 09:27:56,668 - ERROR - error - ERROR in create db_session (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5434 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5434 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-02-20 09:27:56,675 - ERROR - error - ERROR in create db_session (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5434 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5434 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-02-20 09:27:59,582 - ERROR - error - ERROR in create db_session (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5434 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5434 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-02-20 09:27:59,582 - ERROR - error - error in get_user_keys_dates 'NoneType' object has no attribute 'id'
+2025-02-20 09:28:30,646 - ERROR - error - Unknown error in pay_old_key: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-02-20 09:28:33,947 - ERROR - error - Unknown error in pay_old_key: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-02-20 09:28:48,238 - ERROR - error - Unknown error in pay_old_key: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-02-20 09:28:50,185 - ERROR - error - Unknown error in pay_old_key: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-02-20 09:31:14,156 - ERROR - error - ERROR in create db_session (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-02-20 09:31:14,156 - ERROR - error - error in get_user_keys_dates 'NoneType' object has no attribute 'id'
+2025-02-20 09:33:06,393 - ERROR - error - ERROR in create db_session (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5434 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5434 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-02-20 09:33:06,394 - ERROR - error - error in get_user_keys_dates 'NoneType' object has no attribute 'id'
+2025-02-20 09:34:15,624 - ERROR - error - ERROR in create db_session (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5434 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5434 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-02-20 09:34:15,624 - ERROR - error - error in get_user_keys_dates 'NoneType' object has no attribute 'id'
+2025-02-20 09:35:17,506 - ERROR - error - Unknown error in prolong_key: argument of type 'NoneType' is not iterable
+2025-02-20 09:37:01,264 - ERROR - error - Unknown error in prolong_key: 11 validation errors for InlineKeyboardMarkup
+inline_keyboard.0.0
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('text', '53.ovpn ✅'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.1
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.2
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_data', '53.ovpn ✅'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.3
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('web_app', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.4
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('login_url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.5
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.6
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_current_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.7
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_chosen_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.8
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('copy_text', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.9
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_game', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.10
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('pay', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+2025-02-20 09:38:32,817 - ERROR - error - Unknown error in prolong_key: 11 validation errors for InlineKeyboardMarkup
+inline_keyboard.0.0
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('text', '53.ovpn'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.1
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.2
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_data', '53.ovpn'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.3
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('web_app', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.4
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('login_url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.5
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.6
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_current_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.7
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_chosen_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.8
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('copy_text', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.9
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_game', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.10
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('pay', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+2025-02-20 09:39:29,653 - ERROR - error - Unknown error in prolong_key: 11 validation errors for InlineKeyboardMarkup
+inline_keyboard.0.0
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('text', '53.ovpn ✅'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.1
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.2
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_data', '53.ovpn'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.3
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('web_app', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.4
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('login_url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.5
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.6
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_current_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.7
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_chosen_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.8
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('copy_text', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.9
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_game', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.10
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('pay', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+2025-02-20 09:40:51,294 - ERROR - error - Unknown error in prolong_key: 'InlineKeyboardButton' object has no attribute 'append'
+2025-02-20 09:41:42,732 - ERROR - error - Unknown error in prolong_key: 33 validation errors for InlineKeyboardMarkup
+inline_keyboard.0.0
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('text', '55.ovpn ✅'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.1
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.2
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_data', '55.ovpn'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.3
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('web_app', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.4
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('login_url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.5
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.6
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_current_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.7
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_chosen_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.8
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('copy_text', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.9
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_game', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.10
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('pay', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.0
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('text', '54.ovpn ✅'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.1
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.2
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_data', '54.ovpn'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.3
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('web_app', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.4
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('login_url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.5
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.6
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_current_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.7
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_chosen_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.8
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('copy_text', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.9
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_game', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.10
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('pay', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.0
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('text', '53.ovpn ✅'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.1
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.2
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_data', '53.ovpn'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.3
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('web_app', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.4
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('login_url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.5
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.6
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_current_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.7
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_chosen_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.8
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('copy_text', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.9
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_game', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.10
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('pay', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+2025-02-20 10:00:40,244 - ERROR - error - Unknown error in prolong_key: 33 validation errors for InlineKeyboardMarkup
+inline_keyboard.0.0
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('text', '55.ovpn ✅'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.1
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.2
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_data', '55.ovpn'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.3
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('web_app', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.4
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('login_url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.5
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.6
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_current_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.7
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_chosen_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.8
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('copy_text', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.9
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_game', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.0.10
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('pay', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.0
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('text', '54.ovpn ✅'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.1
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.2
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_data', '54.ovpn'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.3
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('web_app', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.4
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('login_url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.5
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.6
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_current_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.7
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_chosen_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.8
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('copy_text', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.9
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_game', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.1.10
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('pay', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.0
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('text', '53.ovpn ✅'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.1
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.2
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_data', '53.ovpn'), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.3
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('web_app', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.4
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('login_url', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.5
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.6
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_current_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.7
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('switch_inline_query_chosen_chat', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.8
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('copy_text', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.9
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('callback_game', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+inline_keyboard.2.10
+  Input should be a valid dictionary or instance of InlineKeyboardButton [type=model_type, input_value=('pay', None), input_type=tuple]
+    For further information visit https://errors.pydantic.dev/2.10/v/model_type
+2025-02-20 11:30:19,257 - ERROR - error - Unknown error in pay_old_key: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
