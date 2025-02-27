@@ -6,8 +6,8 @@ from config import BOT_TOKEN
 from aiogram.fsm.storage.memory import MemoryStorage
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
-from handlers import handlers
 from handlers import admin_handlers
+from handlers import handlers
 from schedule_jobs.jobs import send_message_to_user_expired_today, send_message_to_user_expired_soon
 from connector import dp, bot
 from text.keyboard_text import (

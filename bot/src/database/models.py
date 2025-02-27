@@ -26,7 +26,7 @@ class Users(Base):
     tg_id = Column(Integer)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=True)
-    username = Column(String, nullable=True, unique=True)
+    username = Column(String, nullable=True)
     crated_at = Column(DateTime, default=datetime.utcnow)
     
     key = relationship("Keys", back_populates="user", lazy="selectin")
