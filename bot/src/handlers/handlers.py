@@ -171,7 +171,7 @@ async def all_key(call: CallbackQuery):
             result_message = KEYS_LIST
             for key in keys:
                 result_message+=KEY_INFO % (key['name'], turn_date(str(key['expire_at'].date())))
-            markup = chose_doing_markup()
+            markup = help_cancel()
         await call.message.answer(result_message, 
                                 reply_markup=markup)
     except Exception as e:
