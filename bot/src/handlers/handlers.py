@@ -20,6 +20,7 @@ from services.depencies import (
     key_service, 
     payment_service
 )
+
 from services.shemas import UserShema
 from text.message_text import (
     HELLO,
@@ -79,6 +80,10 @@ def turn_date(date):
     y, m, d = date.split('-')
     return f'{d}.{m}.{y}'
 
+async def admin_sender(message: Message, func_name: str):
+    result_text = f'{message.from_user.first_name} {message.from_user.username} trigged {func_name}'
+    for user_id in ADMINS:
+        await bot.send_message(text=result_text, chat_id=user_id)
 
 @dp.message(Command('start'))
 async def cmd_start(message: Message):
@@ -94,6 +99,7 @@ async def cmd_start(message: Message):
         elif status == 'old':
             await message.answer(HELLO_TWICE % (user_fname), 
                                 reply_markup=chose_doing_markup())
+        await admin_sender(message, 'cmd_start')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in cmd_start: {str(e)}')
 
@@ -156,6 +162,7 @@ async def new_key(call: CallbackQuery, state: FSMContext):
                             reply_markup=choose_period_kb())
         await state.update_data(doing='new')
         await state.set_state(ProlongKey.period)
+        await admin_sender(call, 'new_key')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in new_key: {str(e)}')
 
@@ -185,12 +192,17 @@ async def prolong_key(call: CallbackQuery, state: FSMContext):
     
     try:
         keys_names = key_service().get_user_keys(call.from_user.id)
-        await call.message.answer(CHOOSE_KEY, 
+        if keys_names:
+            await call.message.answer(CHOOSE_KEY, 
                             reply_markup=choose_keys_kb(keys_names))
-        await state.update_data(doing='prolong')
-        await state.update_data(selected = [])
-        await state.set_state(ProlongKey.key)
-        await state.update_data(all_keys=keys_names)
+            await state.update_data(doing='prolong')
+            await state.update_data(selected = [])
+            await state.set_state(ProlongKey.key)
+            await state.update_data(all_keys=keys_names)
+        else:
+            await call.message.answer(KEYS_LIST_EMPTY, 
+                            reply_markup=buy_key_if_empty())
+        
         INFO_LOG.info(f'{call.from_user.first_name} '
                     f'{call.from_user.username} start prolong his key')
     except Exception as e:
@@ -234,7 +246,7 @@ async def chose_keys_old_key(call: CallbackQuery, state: FSMContext):
 
 
 @dp.callback_query(ProlongKey.period, F.data.startswith('mnth'))
-async def pay_old_key(call: CallbackQuery, state: FSMContext):
+async def pay(call: CallbackQuery, state: FSMContext):
     try:
         period = call.data.replace('mnth', '')
         state_data = await state.get_data()
@@ -288,8 +300,9 @@ async def pay_old_key(call: CallbackQuery, state: FSMContext):
                             payload="test-invoice-payload",
                             reply_markup=pay_markup(amount/100))
         await state.update_data(month=period)
+        await admin_sender(call, 'pay')
     except Exception as e:
-        ERROR_LOG.error(f'Unknown error in pay_old_key: {str(e)}')
+        ERROR_LOG.error(f'Unknown error in pay: {str(e)}')
 
 
 @dp.pre_checkout_query(lambda query: True)
@@ -321,6 +334,7 @@ async def successful_payment(message: Message,  state: FSMContext):
                                                 turn_date(str(new_expire))),
                                 reply_markup=chose_doing_markup())
         payment_service().save_payment(payment_info.total_amount/100, message.chat.id)
+        await admin_sender(message, 'successful_payment')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in successful_payment: {str(e)}')
 

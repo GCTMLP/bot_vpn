@@ -1,0 +1,18 @@
+2025-02-28 14:41:57,613 - ERROR - error - ERROR in create db_session (psycopg2.errors.NumericValueOutOfRange) integer out of range
+
+[SQL: INSERT INTO users (tg_id, first_name, last_name, username, crated_at) VALUES (%(tg_id)s, %(first_name)s, %(last_name)s, %(username)s, %(crated_at)s) RETURNING users.id]
+[parameters: {'tg_id': 5415015471, 'first_name': 'GCTMLP', 'last_name': None, 'username': 'gctmlp', 'crated_at': datetime.datetime(2025, 2, 28, 14, 41, 57, 612230)}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2025-02-28 14:42:07,375 - ERROR - error - ERROR in create db_session (psycopg2.errors.NumericValueOutOfRange) integer out of range
+
+[SQL: INSERT INTO users (tg_id, first_name, last_name, username, crated_at) VALUES (%(tg_id)s, %(first_name)s, %(last_name)s, %(username)s, %(crated_at)s) RETURNING users.id]
+[parameters: {'tg_id': 5415015471, 'first_name': 'GCTMLP', 'last_name': None, 'username': 'gctmlp', 'crated_at': datetime.datetime(2025, 2, 28, 14, 42, 7, 374423)}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2025-02-28 14:50:09,746 - ERROR - error - Unknown error in pay: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-02-28 14:50:13,657 - ERROR - error - Unknown error in pay: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-02-28 14:50:14,640 - ERROR - error - Unknown error in pay: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-02-28 14:50:14,742 - ERROR - error - Unknown error in pay: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-02-28 14:50:14,986 - ERROR - error - Unknown error in pay: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-02-28 14:50:23,666 - ERROR - error - Unknown error in pay: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-02-28 14:50:31,416 - ERROR - error - Unknown error in pay: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-02-28 14:53:03,847 - ERROR - error - Unknown error in chose_keys_old_key: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message

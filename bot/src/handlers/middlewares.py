@@ -1,6 +1,8 @@
 from aiogram.filters import BaseFilter
-from config import ADMINS
-from aiogram.types import Message
+from aiogram.types import Message, TelegramObject
+from config import ADMINS, LOGGING_CONFIG
+from aiogram import Bot, Dispatcher, BaseMiddleware
+from typing import Callable, Dict, Any, Awaitable
 
 
 class IsAdmin(BaseFilter):
