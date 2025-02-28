@@ -29,8 +29,12 @@ async def send_message_to_user_expired_today(bot: Bot):
             result_text = USERS_KEYS_EXPIRE_TEXT
             for one_data in data:
                 result_text+=USERS_KEYS_EXPIRE % (one_data['key_name'])
-            await bot.send_message(text=result_text, chat_id=userid, reply_markup=chose_doing_markup())
-            INFO_LOG.info(f'message about expire today send to {userid}')
+            try:
+                await bot.send_message(text=result_text, chat_id=userid, reply_markup=chose_doing_markup())
+                INFO_LOG.info(f'message about expire today send to {userid}')
+            except Exception as e:
+                ERROR_LOG.error(f'cant send notify to {userid}')
+                continue
     except Exception as e:
         ERROR_LOG.error(f'Uknown error in send_message_to_user_expired_today {str(e)}')
 
@@ -49,7 +53,11 @@ async def send_message_to_user_expired_soon(bot: Bot):
             result_text = USERS_KEYS_EXPIRE_TEXT_SOON
             for one_data in data:
                 result_text+=USERS_KEYS_EXPIRE % (one_data['key_name'])
-            await bot.send_message(text=result_text, chat_id=userid, reply_markup=chose_doing_markup())
-            INFO_LOG.info(f'message about expire soon send to {userid}')
+            try:
+                await bot.send_message(text=result_text, chat_id=userid, reply_markup=chose_doing_markup())
+                INFO_LOG.info(f'message about expire soon send to {userid}')
+            except Exception as e:
+                ERROR_LOG.error(f'cant send notify to {userid}')
+                continue
     except Exception as e:
         ERROR_LOG.error(f'Uknown error in send_message_to_user_expired_today {str(e)}')
