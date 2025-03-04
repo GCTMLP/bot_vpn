@@ -20,4 +20,5 @@ venv.bak/
 .DS_Store
 bot/keys
 *.ovpn
-bot/src/logs/
+bot/src/logs/info.log*
+bot/src/logs/error.log*
