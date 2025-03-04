@@ -31,7 +31,7 @@ services:
     env_file:
       - ./bot/.env
     volumes:
-      - ${KEYS_FOLDER}:/code/keys
+      - ./bot/keys:/code/keys
       - ./bot/src:/code/src
     depends_on:
       bot_db_init:

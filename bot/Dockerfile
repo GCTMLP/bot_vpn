@@ -15,7 +15,7 @@ RUN poetry install --no-root --no-interaction --no-ansi --no-cache
 COPY  alembic.ini /code/
 
 COPY migration /code/migration
-COPY $KEYS_FOLDER /code/keys
+COPY keys /code/keys
 COPY src /code/src
 COPY instruction /code/instruction
 COPY .env /code
