@@ -1,5 +1,8 @@
 FROM python:3.12
 
+ARG KEYS_FOLDER
+ENV KEYS_FOLDER $KEYS_FOLDER
+
 RUN pip install poetry --no-cache-dir && \
     poetry config virtualenvs.create false
 
