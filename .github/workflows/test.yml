@@ -33,6 +33,7 @@ jobs:
         echo "NEW_KEY_DIR=${{ vars.NEW_KEY_DIR }}" >> .env
         echo "USED_KEY_DIR=${{ vars.USED_KEY_DIR }}" >> .env
         echo "INSTRUCTION_DIR=${{ vars.INSTRUCTION_DIR }}" >> .env
+        echo "KEYS_FOLDER=${{ vars.KEYS_FOLDER }}" >> .env
 
 
 
