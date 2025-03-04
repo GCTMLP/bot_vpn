@@ -1,15 +1,8 @@
-import enum
 from datetime import datetime
 from sqlalchemy import (
-    JSON,
-    TEXT,
-    TIMESTAMP,
-    UUID,
-    Boolean,
     Column,
-    Enum,
-    Float,
     ForeignKey,
+    BigInteger,
     Integer,
     String,
     DateTime
@@ -23,15 +16,14 @@ class Users(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    tg_id = Column(Integer)
+    tg_id = Column(BigInteger)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=True)
     username = Column(String, nullable=True)
-    crated_at = Column(DateTime, default=datetime.utcnow)
-    
+    crated_at = Column(DateTime, default=datetime.utcnow)   
     key = relationship("Keys", back_populates="user", lazy="selectin")
     payment = relationship("Payments", back_populates="user", lazy="selectin")
-    
+
 
 class Keys(Base):
     __tablename__ = "keys"
@@ -47,7 +39,6 @@ class Keys(Base):
     )
     crated_at = Column(DateTime, default=datetime.utcnow)
     expire_at = Column(DateTime)
-    
     user = relationship("Users", back_populates="key", lazy="selectin")
 
 
@@ -64,5 +55,4 @@ class Payments(Base):
         ),
         nullable=True,
     )
-    
     user = relationship("Users", back_populates="payment", lazy="selectin")
