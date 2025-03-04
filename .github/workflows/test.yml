@@ -36,7 +36,9 @@ jobs:
         echo "INSTRUCTION_DIR=${{ vars.INSTRUCTION_DIR }}" >> bot/.env
         echo "KEYS_FOLDER=${{ vars.KEYS_FOLDER }}" >> bot/.env
 
-
+    - name: Stop containers
+      working-directory: ${{ env.PROJECT_PATH }}
+      run: docker-compose down
 
     - name: Build and start containers
       working-directory: ${{ env.PROJECT_PATH }}
