@@ -19,11 +19,8 @@ jobs:
     # - name: Set up Docker Compose
     #   run: |
     #     sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-<<<<<<< HEAD
     #     sudo chmod +x /usr/local/bin/docker-compose
-=======
 
->>>>>>> 35b8d37bf4ff11f07fcecc53bb7ba41371d1a85e
     - name: Create .env file
       run: |
         echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > bot/.env
@@ -45,7 +42,6 @@ jobs:
       working-directory: ${{ env.PROJECT_PATH }}
       run: docker-compose up -d --build
 
-<<<<<<< HEAD
 
     # - name: Run tests
     #   run: docker-compose exec -T <service_name> python -m pytest
@@ -57,7 +53,5 @@ jobs:
     - name: Build and start containers
       run: docker-compose up -d --build
 
-=======
->>>>>>> 35b8d37bf4ff11f07fcecc53bb7ba41371d1a85e
     # - name: Run tests
     #   run: docker-compose exec -T <service_name> python -m pytest
