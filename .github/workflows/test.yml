@@ -21,10 +21,37 @@ jobs:
     #     sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     #     sudo chmod +x /usr/local/bin/docker-compose
 
+    - name: Create .env file
+      run: |
+        echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > bot/.env
+        echo "PAYMENTS_TOKEN=${{ secrets.PAYMENTS_TOKEN }}" >> bot/.env
+        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> bot/.env
+        echo "DB_USER=${{ vars.DB_USER }}" >> bot/.env
+        echo "DB_HOST=${{ vars.DB_HOST }}" >> bot/.env
+        echo "DB_PORT=${{ vars.DB_PORT }}" >> bot/.env
+        echo "DB_ISOLATION_LEVEL=${{ vars.DB_ISOLATION_LEVEL }}" >> bot/.env
+        echo "DB_NAME=${{ vars.DB_NAME }}" >> bot/.env
+        echo "NEW_KEY_DIR=${{ vars.NEW_KEY_DIR }}" >> bot/.env
+        echo "USED_KEY_DIR=${{ vars.USED_KEY_DIR }}" >> bot/.env
+        echo "INSTRUCTION_DIR=${{ vars.INSTRUCTION_DIR }}" >> bot/.env
+        echo "KEYS_FOLDER=${{ vars.KEYS_FOLDER }}" >> bot/.env
+
+
+
     - name: Build and start containers
       working-directory: ${{ env.PROJECT_PATH }}
       run: docker-compose up -d --build
 
-      
+
+    # - name: Run tests
+    #   run: docker-compose exec -T <service_name> python -m pytest
+    # - name: Set up Docker Compose
+    #   run: |
+    #     sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    #     sudo chmod +x /usr/local/bin/docker-compose
+
+    - name: Build and start containers
+      run: docker-compose up -d --build
+
     # - name: Run tests
     #   run: docker-compose exec -T <service_name> python -m pytest
