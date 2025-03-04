@@ -26,9 +26,9 @@ jobs:
         echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > bot/.env
         echo "PAYMENTS_TOKEN=${{ secrets.PAYMENTS_TOKEN }}" >> bot/.env
         echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> bot/.env
-        echo "DB_USER=${{ vars.DB_USER }}" >> .env
-        echo "DB_HOST=${{ vars.DB_HOST }}" >> .env
-        echo "DB_PORT=${{ vars.DB_PORT }}" >> .env
+        echo "DB_USER=${{ vars.DB_USER }}" >> bot/.env
+        echo "DB_HOST=${{ vars.DB_HOST }}" >> bot/.env
+        echo "DB_PORT=${{ vars.DB_PORT }}" >> bot/.env
         echo "DB_ISOLATION_LEVEL=${{ vars.DB_ISOLATION_LEVEL }}" >> bot/.env
         echo "DB_NAME=${{ vars.DB_NAME }}" >> bot/.env
         echo "NEW_KEY_DIR=${{ vars.NEW_KEY_DIR }}" >> bot/.env
