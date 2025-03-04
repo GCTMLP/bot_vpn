@@ -28,8 +28,10 @@ services:
     build: bot
     command: python src/main.py
     restart: always
+    env_file:
+      - bot/.env
     volumes:
-      - ./bot/keys:/code/keys
+      - ${KEYS_FOLDER}:/code/keys
       - ./bot/src:/code/src
     depends_on:
       bot_db_init:
