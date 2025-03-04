@@ -20,32 +20,36 @@ jobs:
     #   run: |
     #     sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     #     sudo chmod +x /usr/local/bin/docker-compose
-<<<<<<< HEAD
     - name: Create .env file
       run: |
-        echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > .env
-        echo "PAYMENTS_TOKEN=${{ secrets.PAYMENTS_TOKEN }}" >> .env
-        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+        echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > bot/.env
+        echo "PAYMENTS_TOKEN=${{ secrets.PAYMENTS_TOKEN }}" >> bot/.env
+        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> bot/.env
         echo "DB_USER=${{ vars.DB_USER }}" >> .env
         echo "DB_HOST=${{ vars.DB_HOST }}" >> .env
         echo "DB_PORT=${{ vars.DB_PORT }}" >> .env
-        echo "DB_ISOLATION_LEVEL=${{ vars.DB_ISOLATION_LEVEL }}" >> .env
-        echo "DB_NAME=${{ vars.DB_NAME }}" >> .env
-        echo "NEW_KEY_DIR=${{ vars.NEW_KEY_DIR }}" >> .env
-        echo "USED_KEY_DIR=${{ vars.USED_KEY_DIR }}" >> .env
-        echo "INSTRUCTION_DIR=${{ vars.INSTRUCTION_DIR }}" >> .env
-        echo "KEYS_FOLDER=${{ vars.KEYS_FOLDER }}" >> .env
+        echo "DB_ISOLATION_LEVEL=${{ vars.DB_ISOLATION_LEVEL }}" >> bot/.env
+        echo "DB_NAME=${{ vars.DB_NAME }}" >> bot/.env
+        echo "NEW_KEY_DIR=${{ vars.NEW_KEY_DIR }}" >> bot/.env
+        echo "USED_KEY_DIR=${{ vars.USED_KEY_DIR }}" >> bot/.env
+        echo "INSTRUCTION_DIR=${{ vars.INSTRUCTION_DIR }}" >> bot/.env
+        echo "KEYS_FOLDER=${{ vars.KEYS_FOLDER }}" >> bot/.env
 
 
-=======
->>>>>>> 7428a469dec67ebb377b9b8e10199ee01b612bdd
 
     - name: Build and start containers
       run: docker-compose up -d --build
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 7428a469dec67ebb377b9b8e10199ee01b612bdd
+    # - name: Run tests
+    #   run: docker-compose exec -T <service_name> python -m pytest
+    # - name: Set up Docker Compose
+    #   run: |
+    #     sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    #     sudo chmod +x /usr/local/bin/docker-compose
+
+    - name: Build and start containers
+      run: docker-compose up -d --build
+
     # - name: Run tests
     #   run: docker-compose exec -T <service_name> python -m pytest
