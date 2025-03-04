@@ -22,7 +22,7 @@ jobs:
     #     sudo chmod +x /usr/local/bin/docker-compose
 
     - name: Build and start containers
-      working-directory: ${ env.PROJECT_PATH }
+      working-directory: ${{ env.PROJECT_PATH }}
       run: docker-compose up -d --build
 
     # - name: Run tests
