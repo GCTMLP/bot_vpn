@@ -25,5 +25,6 @@ jobs:
       working-directory: ${{ env.PROJECT_PATH }}
       run: docker-compose up -d --build
 
+      
     # - name: Run tests
     #   run: docker-compose exec -T <service_name> python -m pytest
