@@ -1,16 +1,28 @@
-name: Test Self-Hosted Runner
+name: Bot Deploy
 
 on:
   push:
     branches:
+      - main  # Укажите ветку, на которую нужно реагировать
+  pull_request:
+    branches:
       - main
 
 jobs:
-  test:
-    runs-on: self-hosted  # Указываем self-hosted runner
+  build:
+    runs-on: self-hosted  # Указываем, что используем self-hosted runner
+
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Print Hello World
-      run: echo "Hello, World!"
+    # - name: Set up Docker Compose
+    #   run: |
+    #     sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    #     sudo chmod +x /usr/local/bin/docker-compose
+
+    - name: Build and start containers
+      run: docker-compose up -d --build
+
+    # - name: Run tests
+    #   run: docker-compose exec -T <service_name> python -m pytest
