@@ -14,25 +14,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Run command on remote server
-      uses: D3rHase/ssh-command-action@v0.2.2
-      with:
-         host: ${{secrets.SSH_HOST}}
-         user: ${{secrets.SSH_USER}}
-         private_key: ${{secrets.SSH_PRIVATE_KEY}}
-         host_fingerprint: ${{secrets.HOST_FINGERPRINT}}
-         command: |
-           echo '--- START WORK ON REMOTE SERVER ---';
-           cd ${{ secrets.PROJECT_FOLDER }};
-           echo '--- LIST OF FILES ---';
-           ls -al;
-           echo '--- GIT INFORMATION ---'
-           git co dev;
-           git pull;
-           echo '--- DOCKER OPERATIONS ---';
-           docker-compose down;
-           echo '--- LIST OF DOCKER CONTAINERS AFTER STOPING DOCKER CONTAINERS ---';
-           docker ps;
-           docker-compose up --build -d;
+      run: |
+        apk add --no-cache openssh
+        mkdir -p ~/.ssh
+        echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{secrets.SSH_HOST}} >> ~/.ssh/known_hosts
+
+        ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} "cd ${{ secrets.PROJECT_FOLDER }} 
+
+      # uses: D3rHase/ssh-command-action@v0.2.2
+      # with:
+      #    host: ${{secrets.SSH_HOST}}
+      #    user: ${{secrets.SSH_USER}}
+      #    private_key: ${{secrets.SSH_PRIVATE_KEY}}
+      #    host_fingerprint: ${{secrets.HOST_FINGERPRINT}}
+      #    command: |
+      #      echo '--- START WORK ON REMOTE SERVER ---';
+      #      cd ${{ secrets.PROJECT_FOLDER }};
+      #      echo '--- LIST OF FILES ---';
+      #      ls -al;
+      #      echo '--- GIT INFORMATION ---'
+      #      git co dev;
+      #      git pull;
+      #      echo '--- DOCKER OPERATIONS ---';
+      #      docker-compose down;
+      #      echo '--- LIST OF DOCKER CONTAINERS AFTER STOPING DOCKER CONTAINERS ---';
+      #      docker ps;
+      #      docker-compose up --build -d;
     # - name: Set up Docker Compose
     #   run: |
     #     sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
