@@ -23,15 +23,11 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
-    - name: Test SSH connection
+    - name: Connect to server and run commands
       run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa dedic@94.181.203.61 echo "Connected!"
-
-    # - name: Connect to server and run commands
-    #   run: |
-    #     ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} dedic@94.181.203.61 << 'EOF'
-    #     cd ${{ secrets.PROJECT_FOLDER }}
-    #     git pull origin main
+        ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+        cd ${{ secrets.PROJECT_FOLDER }}
+        git pull origin main
       
     # - name: Set up Docker Compose
     #   run: |
@@ -53,9 +49,11 @@ jobs:
         echo "INSTRUCTION_DIR=${{ vars.INSTRUCTION_DIR }}" >> bot/.env
         echo "KEYS_FOLDER=${{ vars.KEYS_FOLDER }}" >> bot/.env
 
-    # - name: Stop containers
-    #   working-directory: ${{ env.PROJECT_PATH }}
-    #   run: docker-compose down
+    - name: Stop containers
+      run: |
+        cd ${{ secrets.PROJECT_FOLDER }}
+        docker-compose down
+        docker-compose up -d --build
 
     # - name: Build and start containers
     #   working-directory: ${{ env.PROJECT_PATH }}
