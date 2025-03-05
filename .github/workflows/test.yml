@@ -25,7 +25,7 @@ jobs:
 
     - name: Connect to server and run commands
       run: |
-        ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa  ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
         cd ${{ secrets.PROJECT_FOLDER }}
         git pull origin main
       
