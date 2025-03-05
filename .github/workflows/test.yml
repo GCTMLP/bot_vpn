@@ -28,6 +28,7 @@ jobs:
         ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa  ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
         cd ${{ secrets.PROJECT_FOLDER }}
         git pull origin main
+        
       
     # - name: Set up Docker Compose
     #   run: |
