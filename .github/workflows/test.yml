@@ -16,13 +16,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Install SSH key
-      uses: webfactory/ssh-agent@v0.7.0
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Save SSH private key
+      run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
     - name: Test SSH connection
       run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} user@192.168.1.1 echo "Connected!"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa user@192.168.1.1 echo "Connected!"
 
     # - name: Connect to server and run commands
     #   run: |
