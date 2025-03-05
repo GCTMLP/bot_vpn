@@ -20,12 +20,15 @@ jobs:
       uses: webfactory/ssh-agent@v0.7.0
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-    - name: Connect to server and run commands
+    - name: Test SSH connection
       run: |
-        ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} dedic@94.181.203.61 << 'EOF'
-        cd ${{ secrets.PROJECT_FOLDER }}
-        git pull origin main
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} user@192.168.1.1 echo "Connected!"
+
+    # - name: Connect to server and run commands
+    #   run: |
+    #     ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} dedic@94.181.203.61 << 'EOF'
+    #     cd ${{ secrets.PROJECT_FOLDER }}
+    #     git pull origin main
       
     # - name: Set up Docker Compose
     #   run: |
