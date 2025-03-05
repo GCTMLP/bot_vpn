@@ -28,6 +28,7 @@ jobs:
         ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa  ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
         cd ${{ secrets.PROJECT_FOLDER }}
         git pull origin main
+
         echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > bot/.env
         echo "PAYMENTS_TOKEN=${{ secrets.PAYMENTS_TOKEN }}" >> bot/.env
         echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> bot/.env
@@ -41,6 +42,9 @@ jobs:
         echo "INSTRUCTION_DIR=${{ vars.INSTRUCTION_DIR }}" >> bot/.env
         echo "KEYS_FOLDER=${{ vars.KEYS_FOLDER }}" >> bot/.env
 
+        docker-compose down
+        docker-compose up -d --build
+
       
     # - name: Set up Docker Compose
     #   run: |
@@ -49,11 +53,10 @@ jobs:
 
         
 
-    - name: Rerun containers
-      run: |
-        cd ${{ secrets.PROJECT_FOLDER }}
-        docker-compose down
-        docker-compose up -d --build
+    # - name: Rerun containers
+    #   run: |
+    #     cd ${{ secrets.PROJECT_FOLDER }}
+        
 
     # - name: Build and start containers
     #   working-directory: ${{ env.PROJECT_PATH }}
