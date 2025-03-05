@@ -3,14 +3,13 @@ name: Bot Deploy
 on:
   push:
     branches:
-      - main  # Укажите ветку, на которую нужно реагировать
+      - main 
   pull_request:
     branches:
       - main
 
 jobs:
   build:
-    # runs-on: self-hosted  # Указываем, что используем self-hosted runner
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -45,30 +44,3 @@ jobs:
         docker-compose down
         docker-compose up -d --build
 
-      
-    # - name: Set up Docker Compose
-    #   run: |
-    #     sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    #     sudo chmod +x /usr/local/bin/docker-compose
-
-        
-
-    # - name: Rerun containers
-    #   run: |
-    #     cd ${{ secrets.PROJECT_FOLDER }}
-        
-
-    # - name: Build and start containers
-    #   working-directory: ${{ env.PROJECT_PATH }}
-    #   run: docker-compose up -d --build
-
-
-    # - name: Run tests
-    #   run: docker-compose exec -T <service_name> python -m pytest
-    # - name: Set up Docker Compose
-    #   run: |
-    #     sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    #     sudo chmod +x /usr/local/bin/docker-compose
-
-    # - name: Run tests
-    #   run: docker-compose exec -T <service_name> python -m pytest
