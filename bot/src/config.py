@@ -1,12 +1,5 @@
-import logging
-import logging.config
 from environs import Env
 from pathlib import Path
-
-import os
-from os.path import join, dirname
-from pathlib import Path
-from string import Template
 
 ADMINS = [297822605]
 
@@ -36,7 +29,7 @@ PRICE = {
     '6': 490
 }
 
-PAYMENTS_TOKEN=env.str("PAYMENTS_TOKEN")
+PAYMENTS_TOKEN = env.str("PAYMENTS_TOKEN")
 
 BASE_DIR = Path(__file__).resolve().parent
 LOG_DIR = BASE_DIR / 'logs'
@@ -87,4 +80,3 @@ LOGGING_CONFIG = {
         },
     },
 }
-

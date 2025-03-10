@@ -1,0 +1,9 @@
+2025-03-04 11:00:59,822 - ERROR - error - error in get_user_keys_dates 'NoneType' object has no attribute 'id'
+2025-03-05 09:00:00,003 - ERROR - error - ERROR in create db_session (psycopg2.OperationalError) could not translate host name "bot_db" to address: Temporary failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-03-05 09:00:00,007 - ERROR - error - Uknown error in send_message_to_user_expired_today 'NoneType' object is not iterable
+2025-03-05 09:00:00,008 - ERROR - error - ERROR in create db_session (psycopg2.OperationalError) could not translate host name "bot_db" to address: Temporary failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-03-05 09:00:00,008 - ERROR - error - Uknown error in send_message_to_user_expired_today 'NoneType' object is not iterable

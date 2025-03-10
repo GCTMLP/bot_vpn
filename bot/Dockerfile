@@ -1,5 +1,8 @@
 FROM python:3.12
 
+ARG KEYS_FOLDER
+ENV KEYS_FOLDER $KEYS_FOLDER
+
 RUN pip install poetry --no-cache-dir && \
     poetry config virtualenvs.create false
 
@@ -9,8 +12,7 @@ COPY pyproject.toml poetry.lock  /code/
 
 RUN poetry install --no-root --no-interaction --no-ansi --no-cache
 
-COPY  alembic.ini /code/
-
+COPY alembic.ini /code/
 COPY migration /code/migration
 COPY keys /code/keys
 COPY src /code/src

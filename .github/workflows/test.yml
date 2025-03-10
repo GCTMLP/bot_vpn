@@ -1,0 +1,46 @@
+name: Bot Deploy
+
+on:
+  push:
+    branches:
+      - main 
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+
+    - name: Save SSH private key
+      run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+    - name: Connect to server and run commands
+      run: |
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa  ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+        cd ${{ secrets.PROJECT_FOLDER }}
+        git pull origin main
+
+        echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > bot/.env
+        echo "PAYMENTS_TOKEN=${{ secrets.PAYMENTS_TOKEN }}" >> bot/.env
+        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> bot/.env
+        echo "DB_USER=${{ vars.DB_USER }}" >> bot/.env
+        echo "DB_HOST=${{ vars.DB_HOST }}" >> bot/.env
+        echo "DB_PORT=${{ vars.DB_PORT }}" >> bot/.env
+        echo "DB_ISOLATION_LEVEL=${{ vars.DB_ISOLATION_LEVEL }}" >> bot/.env
+        echo "DB_NAME=${{ vars.DB_NAME }}" >> bot/.env
+        echo "NEW_KEY_DIR=${{ vars.NEW_KEY_DIR }}" >> bot/.env
+        echo "USED_KEY_DIR=${{ vars.USED_KEY_DIR }}" >> bot/.env
+        echo "INSTRUCTION_DIR=${{ vars.INSTRUCTION_DIR }}" >> bot/.env
+        echo "KEYS_FOLDER=${{ vars.KEYS_FOLDER }}" >> bot/.env
+
+        docker-compose down
+        docker-compose up -d --build
+
