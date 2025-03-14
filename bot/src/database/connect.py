@@ -42,5 +42,6 @@ def db_session() -> Callable[..., AbstractContextManager[Session]]:
     except Exception as e:
         session.rollback()
         ERROR_LOG.error(f'ERROR in create db_session {str(e)}')
+        raise Exception ('DB ERROR')
     finally:
         session.close()
