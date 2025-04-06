@@ -36,7 +36,8 @@ from text.message_text import (
     HELP2,
     INSTRUCTION,
     BAG_MESSAGE,
-    GAME_MESSAGE
+    GAME_MESSAGE,
+    STOP_DOING
 )
 from keyboards.inline_keyboards import (
     choose_period_kb,
@@ -105,6 +106,8 @@ async def cmd_start(message: Message):
         await admin_sender(message, 'cmd_start')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in cmd_start: {str(e)}')
+        await admin_sender(message, 'ERROR IN CMD')
+        await message.answer(STOP_DOING)
 
 
 @dp.callback_query(F.data == 'instruction')
@@ -120,6 +123,7 @@ async def send_instruction(call: CallbackQuery):
             f'{call.from_user.username} get instruction')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in send_instruction: {str(e)}')
+        await call.message.answer(STOP_DOING)
 
 
 @dp.callback_query(F.data == 'help')
@@ -134,6 +138,7 @@ async def help_func(call: CallbackQuery, state: FSMContext):
             f'{call.from_user.username} need help')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in help: {str(e)}')
+        await call.message.answer(STOP_DOING)
 
 
 @dp.message(Help.help_st)
@@ -179,6 +184,8 @@ async def new_key(call: CallbackQuery, state: FSMContext):
         await admin_sender(call, 'new_key')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in new_key: {str(e)}')
+        await admin_sender(message, 'ERROR IN new_key')
+        await call.message.answer(STOP_DOING)
 
 
 @dp.callback_query(F.data == 'my_keys')
@@ -203,6 +210,7 @@ async def all_key(call: CallbackQuery):
             reply_markup=markup)
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in all_key: {str(e)}')
+        await call.message.answer(STOP_DOING)
 
 
 @dp.callback_query(F.data == 'prolong')
@@ -227,6 +235,8 @@ async def prolong_key(call: CallbackQuery, state: FSMContext):
             f'{call.from_user.username} start prolong his key')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in prolong_key: {str(e)}')
+        await admin_sender(message, 'ERROR IN prolong_key')
+        await call.message.answer(STOP_DOING)
 
 
 @dp.callback_query(ProlongKey.key, F.data.contains('ovpn'))
@@ -267,6 +277,7 @@ async def chose_keys_old_key(call: CallbackQuery, state: FSMContext):
                 reply_markup=choose_keys_kb(keys_names, selected_keys))
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in chose_keys_old_key: {str(e)}')
+        await call.message.answer(STOP_DOING)
 
 
 @dp.callback_query(ProlongKey.period, F.data.startswith('mnth'))
@@ -331,6 +342,8 @@ async def pay(call: CallbackQuery, state: FSMContext):
         await admin_sender(call, 'pay')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in pay: {str(e)}')
+        await admin_sender(message, 'ERROR IN pay')
+        await call.message.answer(STOP_DOING)
 
 
 @dp.pre_checkout_query(lambda query: True)
@@ -375,6 +388,7 @@ async def successful_payment(message: Message,  state: FSMContext):
         await admin_sender(message, 'successful_payment')
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in successful_payment: {str(e)}')
+        await message.answer(STOP_DOING)
 
 
 @dp.message(Command("dice"))
