@@ -39,6 +39,7 @@ class UserService:
             return 'new'
         except Exception as e:
             ERROR_LOG.error(f'error in save_start_user {str(e)}')
+            raise Exception('ERROR IN SERVICES')
 
     def get_all_users(self):
         try:
@@ -49,6 +50,7 @@ class UserService:
                                 create_at=user.crated_at) for user in users]
         except Exception as e:
             ERROR_LOG.error(f'error in get_all_users {str(e)}')
+            raise Exception('ERROR IN SERVICES')
 
 
 class KeyService:
@@ -68,6 +70,7 @@ class KeyService:
             return [key.key_name for key in keys]
         except Exception as e:
             ERROR_LOG.error(f'error in get_user_keys {str(e)}')
+            raise Exception('ERROR IN SERVICES')
 
     def get_user_keys_dates(self, tg_user_id: int) -> list:
         try:
@@ -77,6 +80,7 @@ class KeyService:
                     'expire_at':key.expire_at} for key in keys]
         except Exception as e:
             ERROR_LOG.error(f'error in get_user_keys_dates {str(e)}')
+            raise Exception('ERROR IN SERVICES')
 
     def set_new_key(self, tg_id, period):
         try:
@@ -96,6 +100,7 @@ class KeyService:
             return str(expire_date), name
         except Exception as e:
             ERROR_LOG.error(f'error in set_new_key {str(e)}')
+            raise Exception('ERROR IN SERVICES')
 
     def get_expired_keys(self, today=False, soon=False):
         try:
@@ -112,6 +117,7 @@ class KeyService:
             return keys_expire
         except Exception as e:
             ERROR_LOG.error(f'error in get_expired_keys {str(e)}')
+            raise Exception('ERROR IN SERVICES')
 
     def get_expired_today_keys(self):
         try:
@@ -123,6 +129,7 @@ class KeyService:
             return keys_today_expire
         except Exception as e:
             ERROR_LOG.error(f'error in get_expired_today_keys {str(e)}')
+            raise Exception('ERROR IN SERVICES')
 
     def get_users_keys(self) -> dict:
         try:
@@ -142,6 +149,7 @@ class KeyService:
             return data
         except Exception as e:
             ERROR_LOG.error(f'error in get_users_keys {str(e)}')
+            raise Exception('ERROR IN SERVICES')
 
     def prolong_key(self, key_names, prolong_month):
         try:
@@ -155,6 +163,7 @@ class KeyService:
             return new_expires
         except Exception as e:
             ERROR_LOG.error(f'error in prolong_key {str(e)}')
+            raise Exception('ERROR IN SERVICES')
 
 
 class PaymentService:
@@ -171,3 +180,4 @@ class PaymentService:
             self._payment_repo.add_one({'sum': suma, 'user_id': user_id})
         except Exception as e:
             ERROR_LOG.error(f'error in save_payment {str(e)}')
+            raise Exception('ERROR IN SERVICES')
