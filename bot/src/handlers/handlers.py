@@ -439,4 +439,3 @@ async def bad_message(message: Message):
         await delete_last_bot_message(message)
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in bad_message: {str(e)}')
-
