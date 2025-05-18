@@ -20,7 +20,7 @@ async def send_message_to_user_expired_today(bot: Bot):
         not_prolong_keys = key_service().get_expired_keys(today=True)
         if not_prolong_keys:
             for not_prolong_key in not_prolong_keys:
-                if result_data.get(not_prolong_key.user.id):
+                if result_data.get(not_prolong_key.user.tg_id):
                     result_data[not_prolong_key.user.tg_id].append({'key_name': not_prolong_key.key_name,
                                                         'expire_at':not_prolong_key.expire_at})
                 else:
@@ -45,7 +45,7 @@ async def send_message_to_user_expired_soon(bot: Bot):
         not_prolong_keys = key_service().get_expired_keys(soon=True)
         if not_prolong_keys:
             for not_prolong_key in not_prolong_keys:
-                if result_data.get(not_prolong_key.user.id):
+                if result_data.get(not_prolong_key.user.tg_id):
                     result_data[not_prolong_key.user.tg_id].append({'key_name': not_prolong_key.key_name,
                                                         'expire_at':not_prolong_key.expire_at})
                 else:
