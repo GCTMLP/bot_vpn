@@ -30,6 +30,7 @@ async def main():
     scheduler = AsyncIOScheduler()
     set_scheduled_jobs(scheduler, bot)
     try:
+        handlers.message_scheduler.start()
         scheduler.start()
         await dp.start_polling(bot)
     finally:
