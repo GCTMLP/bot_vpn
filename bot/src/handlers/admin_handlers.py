@@ -119,7 +119,8 @@ async def write_to_all_msg(message: Message):
     try:
         users: UserShema = user_service.get_all_users()
         for user in users:
-            bot.send_message(text=str(message.text), chat_id=user.tg_id)
+            message_to_users = str(message.text).split('msg ')[1]
+            bot.send_message(text=str(message_to_users), chat_id=user.tg_id)
     except Exception as e:
         ERROR_LOG.error(f'Unknown error in write_to_all_msg: {str(e)}')
 
