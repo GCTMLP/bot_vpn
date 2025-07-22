@@ -117,7 +117,7 @@ async def write_to_one(message: Message):
 @dp.message(IsAdmin(), F.text.contains('msg'))
 async def write_to_all_msg(message: Message):
     try:
-        users: UserShema = user_service.get_all_users()
+        users: UserShema = user_service().get_all_users()
         for user in users:
             message_to_users = str(message.text).split('msg ')[1]
             bot.send_message(text=str(message_to_users), chat_id=user.tg_id)
